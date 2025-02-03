@@ -8,7 +8,9 @@ import {AuthContext} from "../../context/AuthContext"
 
 const ProfilePage = () => {
   const data = useLoaderData()
+console.log(data)
 
+  
   const {currentUser, updateUser} = useContext(AuthContext)
 
   const navigate = useNavigate()
