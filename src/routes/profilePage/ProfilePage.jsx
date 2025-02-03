@@ -61,13 +61,13 @@ console.log(data)
             </Link>
           </div>
 
-          <List posts={data.userPosts} />
+          //<List posts={data.userPosts} />
 
           <div className="title">
             <h1>Saved List</h1>
           </div>
 
-          <List posts={data.savedPosts} />
+          //<List posts={data.savedPosts} />
         </div>
       </div>
 
