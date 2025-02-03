@@ -86,15 +86,8 @@ const ProfilePage = () => {
 
       <div className="chatContainer">
         <div className="wrapper">
-          <Suspense fallback={<p>Loading...</p>}>
-            <Await
-              resolve={data.chatResponse}
-              errorElement={<p>Error loading chats!</p>}
-            >
-              {(chatResponse) => <Chat chats={chatResponse.data} />}
-            </Await>
-          </Suspense>
-          <Chat />
+          <Chat chats={data} />
+       
         </div>
       </div>
     </div>
