@@ -8,8 +8,7 @@ import {AuthContext} from "../../context/AuthContext"
 
 const ProfilePage = () => {
   const data = useLoaderData()
-console.log(data)
-
+  console.log(data)
   
   const {currentUser, updateUser} = useContext(AuthContext)
 
@@ -61,19 +60,41 @@ console.log(data)
             </Link>
           </div>
 
-          //<List posts={data.userPosts} />
+          <Suspense fallback={<p>Loading...</p>}>
+            <Await
+              resolve={data.postResponse}
+              errorElement={<p>Error loading posts!</p>}
+            >
+              {(postResponse) => <List posts={postResponse.data.userPosts} />}
+            </Await>
+          </Suspense>
 
           <div className="title">
             <h1>Saved List</h1>
           </div>
 
-          //<List posts={data.savedPosts} />
+          <Suspense fallback={<p>Loading...</p>}>
+            <Await
+              resolve={data.postResponse}
+              errorElement={<p>Error loading posts!</p>}
+            >
+              {(postResponse) => <List posts={postResponse.data.savedPosts} />}
+            </Await>
+          </Suspense>
         </div>
       </div>
 
       <div className="chatContainer">
         <div className="wrapper">
-          <Chat chats={data} />
+          <Suspense fallback={<p>Loading...</p>}>
+            <Await
+              resolve={data.chatResponse}
+              errorElement={<p>Error loading chats!</p>}
+            >
+              {(chatResponse) => <Chat chats={chatResponse.data} />}
+            </Await>
+          </Suspense>
+          <Chat />
         </div>
       </div>
     </div>
